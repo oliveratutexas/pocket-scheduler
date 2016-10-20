@@ -37,6 +37,18 @@ var API = {
     Auth.addToAPIRequest(data);
     return API.call('add', data).then(function(data) { return data.item; });
   }
+    ,
+
+    // /**
+    //  * Get a list of all URLS from pocket. 
+    //  * See http://getpocket.com/developer/docs/v3/get .
+    //  * @return A Promise of the API call result.
+    //  */
+    // list: function(url) {
+       
+    //     return API.call('get', data).then(function(data) { return data.item; });
+    // }
+
 };
 
 var Auth = {
