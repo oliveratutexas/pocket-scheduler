@@ -42,15 +42,19 @@ var API = {
         });
     },
 
-    // /**
-    //  * Get a list of all URLS from pocket. 
-    //  * See http://getpocket.com/developer/docs/v3/get .
-    //  * @return A Promise of the API call result.
-    //  */
-    // list: function(url) {
-
-    //     return API.call('get', data).then(function(data) { return data.item; });
-    // }
+    /**
+     * Get a list of all URLS from pocket. 
+     * See http://getpocket.com/developer/docs/v3/get .
+     * @return A Promise of the API call result.
+     */
+    list: function() {
+        //empty data, getting requires no params
+        var data = {};
+        Auth.addToAPIRequest(data);
+        return API.call('get', data).then(function(data) {
+            return data;
+        });
+    }
 
 };
 

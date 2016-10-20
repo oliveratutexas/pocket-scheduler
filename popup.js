@@ -51,15 +51,23 @@ function main() {
         return;
     }
 
-    getURL()
-        .then(function(url) {
-            setStatus('Saving ' + url + '...');
-            return url;
-        })
-        .then(API.add)
-        .then(function(data) {
-            setStatus('Saved ' + data.title + '.\n' + data.excerpt);
-        })
-        .catch(logError);
+    console.log("Getting the data");
+
+    API.list()
+        .then(function(data){
+            console.log("Data:");
+            console.log(data);
+        });
+
+    // getURL()
+    //     .then(function(url) {
+    //         setStatus('Saving ' + url + '...');
+    //         return url;
+    //     })
+    //     .then(API.add)
+    //     .then(function(data) {
+    //         setStatus('Saved ' + data.title + '.\n' + data.excerpt);
+    //     })
+    //     .catch(logError);
 }
 main();
