@@ -49,7 +49,7 @@ var API = {
      */
     list: function() {
         //empty data, getting requires no params
-        var data = {};
+        var data = {'detailType':'complete'};
         Auth.addToAPIRequest(data);
         return API.call('get', data).then(function(data) {
             return data;

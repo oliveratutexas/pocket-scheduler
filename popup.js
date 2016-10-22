@@ -55,19 +55,33 @@ function main() {
 
     API.list()
         .then(function(data){
+
             console.log("Data:");
             console.log(data);
+
+            all_tags = [];
+            //filter the information to the stuff that I need.
+            var all_items = data.list;
+            for(var prop in all_items){
+
+                var item = all_items[prop];
+
+                if(item.hasOwnProperty('resolved_title')
+                   && item.hasOwnProperty('given_url')
+                   && item.hasOwnProperty('tags')){
+
+                    console.log(item.resolved_title);
+                    console.log(item.given_url);
+
+                    for(var tag in item.tags){
+                        all_tags.push(tag);
+                    }
+                    console.log(all_tags);
+
+                }
+            }
         });
 
-    // getURL()
-    //     .then(function(url) {
-    //         setStatus('Saving ' + url + '...');
-    //         return url;
-    //     })
-    //     .then(API.add)
-    //     .then(function(data) {
-    //         setStatus('Saved ' + data.title + '.\n' + data.excerpt);
-    //     })
-    //     .catch(logError);
 }
+
 main();
