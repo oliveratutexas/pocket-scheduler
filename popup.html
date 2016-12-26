@@ -1,12 +1,55 @@
 <!doctype html>
-<style>
-body {
-  font-family: sans-serif;
-  font-size: 0.8em;
-  width: 300px;
-  word-wrap: break-word;
-}
-</style>
-<body>...</body>
+<script src="https://unpkg.com/react@latest/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="popup.css">
+
+<body>
+    <div class="superPocket">
+        <div class="searchBar">
+            <input type="text" id="tagSearchInput" onkeyup="searchFilter()" placeholder="Search for tags..."><span>Srch</span>
+        </div>
+        <div id="Holder">
+            <div class="tagGroup">
+                <div>
+                    <span class="hashIcon ">#</span>
+                    <span class="tagName">Lorem</span>
+                    <span class="tagCount">10</span>
+                    <span class="starred ">*</span>
+                </div>
+                <div class="sortBar toggle">
+                    <span class="lengthSort sq_btn">^</span>
+                    <span class="freqSort sq_btn">V</span>
+                    <span class="timeSort sq_btn">@</span>
+                </div>
+                <div class="dropdown">
+                    <div class="linkGroup">
+                        <span class="linkInfo">
+                            <div class="linkName">Link</div>
+                            <div class="details">Here are some link details</div>
+                        </span>
+                        <span class="linkIconGroup">
+                            <div class="closeButton">X</div>
+                            <div class="readCount">69</div>
+                            <div class="readTime">30min</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="upBar"><span>^^^</span></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
 <script src=api.js></script>
 <script src=popup.js></script>
+<script>
+    function dropDown() {
+
+    }
+
+    var tag_holders = document.getElementsByClassName('tagGroup');
+    for (var i = 0; i < tag_holders.length; ++i) {
+        tag_holders[i].addEventListener('click', dropDown);
+    }
+</script>

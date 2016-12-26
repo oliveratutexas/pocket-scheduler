@@ -40,6 +40,32 @@ function logError(err) {
 }
 
 /**
+ *
+    Local Storage Check
+    https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+*/
+function storageAvailable(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
+/*
+ *
+ */
+function searchFilter(){
+
+    var term = document.getElementById("tagSearchInput").value.toUpperCase();
+
+}
+
+/**
  * main popup control flow.
  */
 function main() {
@@ -54,34 +80,64 @@ function main() {
     console.log("Getting the data");
 
     API.list()
-        .then(function(data){
+        .then(function(data) {
+
+            if(storageAvailable('localStorage')){
+                console.log('OH hey it works!');
+            }
+            else{
+                alert('THERES NOT LOCAL STORAGE AVAILABLE!');
+            }
 
             console.log("Data:");
             console.log(data);
 
-            all_tags = [];
+            var tag_set = new Set();
+
             //filter the information to the stuff that I need.
             var all_items = data.list;
-            for(var prop in all_items){
+            var bag = new Map();
+
+
+            //iterate through each item
+            for (var prop in all_items) {
 
                 var item = all_items[prop];
 
-                if(item.hasOwnProperty('resolved_title')
-                   && item.hasOwnProperty('given_url')
-                   && item.hasOwnProperty('tags')){
+                if (item.hasOwnProperty('resolved_title') &&
+                    item.hasOwnProperty('given_url') &&
+                    item.hasOwnProperty('tags')) {
 
                     console.log(item.resolved_title);
                     console.log(item.given_url);
+                    console.log(item.tags);
 
-                    for(var tag in item.tags){
-                        all_tags.push(tag);
+                    //Populate tag->[item1,item2,item3]
+                    //TODO - items aren't deep copied. 
+                    for (var tag in item.tags) {
+                        if (bag.has(tag)) {
+                            bag.get(tag).push(Object.assign({}, item));
+                        } else {
+                            //init array
+                            bag.set(tag, [Object.assign({}, item)]);
+                        }
                     }
-                    console.log(all_tags);
-
                 }
             }
+
+            // localStorage.setItem();
+
         });
 
+}
+
+class ItemStatus extends React.Component {
+    constructor(){
+        super();
+    }
+    render(){
+        return (<div></div>);
+    }
 }
 
 main();

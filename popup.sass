@@ -1,0 +1,103 @@
+
+$solid_border_thickness : 3px
+$borderColor : #000000
+$pill_thickness: 2px
+
+$pocket-red: #ED4159
+$pocket-sea-green: #54BCB5
+$pocket-yellow: #FAB54E
+$pocket-aqua-marine: #88ECB8
+$pocket-off-white: #ECECEC
+
+.superPocket
+    background-color: $pocket-red
+
+.pillShaped
+    border: $pill_thickness solid #555555
+    border-radius: 8px
+
+.blockCon
+    padding: 2px
+
+.indented
+    padding-left: 1em
+    padding-right: 0.4em
+
+.holder
+    @extend .indented
+
+.solidOutline
+    border: $solid_border_thickness solid $borderColor
+
+body
+    font-family: sans-serif
+    font-size: 0.8em
+    width: 25em
+    word-wrap: break-word
+    background-color: $pocket-yellow
+    margin: auto
+
+tr
+    border: 1px solid #bbb
+    border-radius: 3px
+    background-color: #abcabc
+
+.sq_btn
+    style: bold
+
+.searchBar
+    display: table
+    margin: auto
+
+.tagGroup
+    @extend .indented
+    @extend .pillShaped
+    background-color: $pocket-off-white
+    margin-left: 10px
+    margin-right: 10px
+    margin-top: 5px
+
+.sortBar
+    height: 2em
+    border: 1px solid #bbb
+    background-color: #abab00
+    text-align: right
+
+.dropdown
+    @extend .indented
+    background-color: $pocket-sea-green
+
+.linkGroup
+    @extend .indented
+    @extend .pillShaped
+
+.linkIconGroup
+    float: right
+
+.linkName
+    font-size: 1.4em
+
+.linkInfo
+    display: inline-block
+
+.linkIconGroup
+    display: inline-block
+
+.hashIcon
+    @extend .blockCon
+
+.tagName
+    font-size: 1.7em
+    @extend .blockCon
+
+.tagCount
+    @extend .blockCon
+    float: right
+
+.starred
+    @extend .blockCon
+    float: right
+
+.upBar
+    display: block
+    text-align: center
